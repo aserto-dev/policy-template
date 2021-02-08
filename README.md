@@ -1,2 +1,2 @@
-# aserto-application-policy-template
-Template for creating a policy repository
+# policy-template
+Template for creating a Aserto policy repository
