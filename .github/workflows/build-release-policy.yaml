@@ -1,0 +1,32 @@
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+  release_policy:
+    runs-on: ubuntu-latest
+    name: build
+    steps:
+    
+    - uses: actions/checkout@v2
+
+    - name: Build Policy 
+      id: aserto-build
+      uses: aserto-dev/aserto-build-action@v1
+      with:
+        source_path: "src"
+        target_path: "build"
+        target_file: "bundle.tar.gz"
+        build_options: "--revision $GITHUB_SHA"
+
+    - name: Release Policy
+      id: release
+      uses: xresloader/upload-to-github-release@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        file: "build/bundle.tar.gz"
+        tags: true
+        draft: false
+        verbose: true
