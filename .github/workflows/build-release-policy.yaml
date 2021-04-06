@@ -19,6 +19,7 @@ jobs:
         target_path: "build"
         target_file: "bundle.tar.gz"
         build_options: "--revision $GITHUB_SHA"
+        verbose: true
 
     - name: Release Policy
       id: release
