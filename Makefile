@@ -28,4 +28,4 @@ build:
 	-e BUILD_OPTIONS=$(INPUT_BUILD_OPTIONS) \
 	-v $(PWD)/$(INPUT_SOURCE):/src:ro \
 	-v $(PWD)/$(INPUT_TARGET_PATH):/dst:rw \
-	aserto/aserto-build:latest
+	ghcr.io/aserto-dev/aserto-build:latest
