@@ -6,7 +6,7 @@ default visible = false
 default enabled = false
 
 allowed {
-    input.user == "web-admin"
+    input.role == "web-admin"
 }
 
 enabled {
