@@ -11,12 +11,12 @@ GITHUB_SHA          ?= $(shell git rev-parse HEAD 2>/dev/null)
 GITHUB_WORKSPACE    := /github/workspace
 
 # build action input parameters
-INPUT_SOURCE_PATH   := src
-INPUT_TARGET_PATH   := build
-INPUT_TARGET_FILE   := bundle.tar.gz
-INPUT_REVISION      := $(GITHUB_SHA)
-INPUT_BUILD_OPTIONS := 
-INPUT_VERBOSE       := false
+SOURCE_PATH   := src
+TARGET_PATH   := build
+TARGET_FILE   := bundle.tar.gz
+REVISION      := $(GITHUB_SHA)
+BUILD_OPTIONS := 
+VERBOSE       := false
 
 .PHONY: build
 build:
@@ -28,10 +28,10 @@ build:
 	-v $(PWD):$(GITHUB_WORKSPACE) \
 	-e GITHUB_WORKSPACE=$(GITHUB_WORKSPACE) \
 	-e GITHUB_SHA=$(GITHUB_SHA) \
-	-e INPUT_SOURCE_PATH=$(INPUT_SOURCE_PATH) \
-	-e INPUT_TARGET_PATH=$(INPUT_TARGET_PATH) \
-	-e INPUT_TARGET_FILE=$(INPUT_TARGET_FILE) \
-	-e INPUT_REVISION=$(INPUT_REVISION) \
-	-e INPUT_BUILD_OPTIONS=$(INPUT_BUILD_OPTIONS) \
-	-e INPUT_VERBOSE=$(INPUT_VERBOSE) \
-	ghcr.io/aserto-dev/aserto-one:action-v2
+	-e INPUT_SOURCE_PATH=$(SOURCE_PATH) \
+	-e INPUT_TARGET_PATH=$(TARGET_PATH) \
+	-e INPUT_TARGET_FILE=$(TARGET_FILE) \
+	-e INPUT_REVISION=$(REVISION) \
+	-e INPUT_BUILD_OPTIONS=$(BUILD_OPTIONS) \
+	-e INPUT_VERBOSE=$(VERBOSE) \
+	ghcr.io/aserto-dev/aserto-one:action-v2 > /dev/null
